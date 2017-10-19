@@ -1,0 +1,7 @@
+.classpath
+.project
+.settings
+gc.log*
+infinispan.log
+logs
+target

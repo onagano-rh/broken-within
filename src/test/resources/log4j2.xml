@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration name="CommandLineConfig" packages="org.infinispan.util.logging.log4j">
+  <Properties>
+    <Property name="infinispan.module-suffix"></Property>
+    <Property name="infinispan.log.path">.</Property>
+    <Property name="infinispan.log.thread-filter"></Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="STDOUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-4level %C{1.}:%L - %msg%n"/>
+    </Console>
+    <RollingFile name="File"
+          fileName="${sys:infinispan.log.path}/infinispan${sys:infinispan.module-suffix}.log"
+          filePattern="${sys:infinispan.log.path}/logs/infinispan${sys:infinispan.module-suffix}-%i.log"
+          >
+      <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <Policies>
+          <OnStartupTriggeringPolicy/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Logger name="org.infinispan" level="DEBUG"/>
+    <Logger name="org.hibernate.search" level="DEBUG"/>
+    <Logger name="com.mchange" level="WARN"/>
+    <Logger name="org.jgroups" level="DEBUG"/>
+
+    <Root level="DEBUG">
+      <AppenderRef ref="STDOUT" level="ERROR"/>
+      <AppenderRef ref="File" level="INFO"/>
+    </Root>
+  </Loggers>
+</Configuration>
