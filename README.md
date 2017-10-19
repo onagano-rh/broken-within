@@ -13,7 +13,7 @@ java.lang.AssertionError: [taxi-10,1.343311,103.661969] is 20.98496260319283 dis
         ...
 ~~~
 
-You may want to add JVM options like '-DargLine="-Xmx1g -verbose:gc"'.
+You may want to add JVM options like `-DargLine="-Xmx1g -verbose:gc"`.
 
 
 ## To test on another version
@@ -27,8 +27,9 @@ On JDG 7, you need to comment out `.onDefaultCoordinates()` method in the test c
 Firstly get the artifact, `infinispan-embedded-query-8.4.0.Final-redhat-2-jdg-1020.jar`, from Red Hat Support.
 Then install it into your local Maven repository.
 
-  $ mvn install:install-file
-         -Dfile=/path/to/infinispan-embedded-query-8.4.0.Final-redhat-2-jdg-1020.jar
-         -DgroupId=org.infinispan -DartifactId=infinispan-embedded-query
-         -Dversion=8.4.0.Final-redhat-2-jdg-1020 -Dpackaging=jar
-
+~~~
+$ mvn install:install-file \
+    -Dfile=/path/to/infinispan-embedded-query-8.4.0.Final-redhat-2-jdg-1020.jar \
+    -DgroupId=org.infinispan -DartifactId=infinispan-embedded-query \
+    -Dversion=8.4.0.Final-redhat-2-jdg-1020 -Dpackaging=jar
+~~~
